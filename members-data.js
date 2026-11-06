@@ -96,7 +96,7 @@ const DEFAULT_MEMBERS = [
     "id": "otf_core_1",
     "alias": "",
     "avatar": "https://i.postimg.cc/3rFZ26TH/download-(1).jpg",
-    "bio": "ผู้คุมทัพหลักและวางแผนยุทธวิธีของ OTF ดูแลความเรียบร้อยและกำลังพล",
+    "bio": "",
     "cover": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
     "customRoleTitle": "Leader",
     "discord": "OTF#0002",
@@ -105,7 +105,7 @@ const DEFAULT_MEMBERS = [
     "joinDate": "2024-02-15",
     "name": "Doze Winterfell",
     "order": 2,
-    "quote": "คำสั่งชัดเจน การกระทำเด็ดขาด ไม่มีคำว่าถอยหลังในครอบครัวเรา",
+    "quote": "",
     "role": "core",
     "status": "online",
     "steam": "https://steamcommunity.com"
