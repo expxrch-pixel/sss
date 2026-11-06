@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OTF — onythefamily Members Roster & Directory">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OTF — onythefamily">
+  <meta property="og:title" content="OTF — Members">
+  <meta property="og:description" content="รายชื่อสมาชิกและโครงสร้างครอบครัว OTF (onythefamily)">
+  <title>OTF — Members</title>
+  <link rel="icon" type="image/png" href="otf-logo.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="otf-logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="members-page">
+
+  <!-- Ambient Backdrop & Weather Particles -->
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <div class="ambient-glow-mesh" aria-hidden="true"></div>
+  <canvas id="weatherCanvas"></canvas>
+
+  <!-- Topbar -->
+  <header class="topbar shell">
+    <a class="brand" href="index.html" aria-label="OTF Home">
+      <div class="brand-box">
+        <img src="otf-logo.png" alt="OTF">
+      </div>
+      <div class="brand-text">
+        <span class="brand-word">OTF</span>
+        <span class="brand-sub">onythefamily</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="members.html">Members</a>
+    </nav>
+  </header>
+
+  <!-- Members Roster Main -->
+  <main class="members-main shell">
+    <section class="members-intro-minimal">
+      <div class="members-intro-copy">
+        <div class="minimal-kicker">OTF • ONYTHEFAMILY</div>
+        <h1>Members</h1>
+        <p>รายชื่อสมาชิก  </p>
+      </div>
+
+      <!-- Realtime Count Tiles -->
+      <div class="member-summary-grid">
+        <div class="summary-tile total">
+          <span>ทั้งหมด</span>
+          <strong id="totalCount">00</strong>
+        </div>
+        <div class="summary-tile rank-owner">
+          <span id="labelOwner">OWNER</span>
+          <strong id="ownerCount">00</strong>
+        </div>
+        <div class="summary-tile rank-core">
+          <span id="labelCore">LEADER</span>
+          <strong id="coreCount">00</strong>
+        </div>
+        <div class="summary-tile rank-support">
+          <span id="labelSupport">BIGSUPPORT</span>
+          <strong id="supportCount">00</strong>
+        </div>
+        <div class="summary-tile rank-member">
+          <span id="labelMember">MEMBERS</span>
+          <strong id="memberCount">00</strong>
+        </div>
+      </div>
+    </section>
+
+<!-- Search & Filter Controls -->
+    <section class="members-tools-minimal">
+      <label class="search-wrap" for="memberSearch">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+        <input id="memberSearch" type="text" placeholder="ค้นหาชื่อ, ฉายา หรือตำแหน่ง..." autocomplete="off">
+      </label>
+
+      <div class="filters" role="group" aria-label="Member Filter">
+        <button class="filter active" data-filter="all">ทั้งหมด</button>
+        <button class="filter" data-filter="owner">OWNER</button>
+        <button class="filter" data-filter="core">LEADER</button>
+        <button class="filter" data-filter="bigsupport">BIGSUPPORT</button>
+        <button class="filter" data-filter="member">MEMBERS</button>
+      </div>
+    </section>
+
+    <!-- RANK BLOCK: OWNER -->
+    <section class="rank-block rank-owner" id="ownerBlock" data-rank="owner">
+      <div class="rank-heading">
+        <div class="rank-heading-title">
+          <span class="rank-dot"></span>
+          <div class="rank-title" id="titleOwner">OWNER</div>
+        </div>
+        <span class="rank-count-badge" id="badgeOwner">1 สมาชิก</span>
+      </div>
+      <div id="ownerList"></div>
+    </section>
+
+    <!-- RANK BLOCK: LEADER -->
+    <section class="rank-block rank-core" id="coreBlock" data-rank="core">
+      <div class="rank-heading">
+        <div class="rank-heading-title">
+          <span class="rank-dot"></span>
+          <div class="rank-title" id="titleCore">LEADER</div>
+        </div>
+        <span class="rank-count-badge" id="badgeCore">0 สมาชิก</span>
+      </div>
+      <div class="core-grid" id="coreList"></div>
+    </section>
+
+    <!-- RANK BLOCK: BIGSUPPORT -->
+    <section class="rank-block rank-support" id="supportBlock" data-rank="bigsupport">
+      <div class="rank-heading">
+        <div class="rank-heading-title">
+          <span class="rank-dot"></span>
+          <div class="rank-title" id="titleSupport">BIGSUPPORT</div>
+        </div>
+        <span class="rank-count-badge" id="badgeSupport">0 สมาชิก</span>
+      </div>
+      <div class="support-grid" id="supportList"></div>
+    </section>
+
+    <!-- RANK BLOCK: MEMBERS -->
+    <section class="rank-block rank-member" id="memberBlock" data-rank="member">
+      <div class="rank-heading">
+        <div class="rank-heading-title">
+          <span class="rank-dot"></span>
+          <div class="rank-title" id="titleMember">MEMBERS</div>
+        </div>
+        <span class="rank-count-badge" id="badgeMember">0 สมาชิก</span>
+      </div>
+      <div class="member-grid" id="memberList"></div>
+    </section>
+
+    <!-- Empty Search State -->
+    <div class="empty-state" id="emptyState" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+      <strong>ไม่พบรายชื่อสมาชิกที่ค้นหา</strong>
+      <span>ลองตรวจสอบคำสะกด หรือเปลี่ยนตัวเลือกตัวกรอง</span>
+    </div>
+  </main>
+
+  <!-- Interactive Profile Detail Modal -->
+  <div class="profile-overlay" id="profileOverlay" aria-hidden="true"></div>
+  <section class="profile-modal" id="profileModal" aria-hidden="true">
+    <button class="profile-close" id="profileClose" type="button" aria-label="Close profile">×</button>
+
+    <div class="modal-banner">
+      <img id="modalCover" src="otf-banner-wave.jpg" alt="Member cover banner">
+      <div class="modal-banner-overlay"></div>
+    </div>
+
+    <div class="modal-body-wrap">
+      <div class="modal-avatar-stack">
+        <div class="modal-photo-frame">
+          <img id="modalAvatar" alt="Member photo">
+        </div>
+      </div>
+
+      <div class="modal-main">
+        <div class="modal-topline">
+          <div class="modal-badge" id="modalRoleBadge">MEMBERS</div>
+          <div class="modal-status-badge" id="modalStatusBadge" data-status="online">
+            <span class="status-dot"></span>
+            <span id="modalStatusText">ONLINE</span>
+          </div>
+        </div>
+
+        <h2 id="modalName">OTF • MEMBER</h2>
+        <div class="modal-title-custom" id="modalCustomTitle">OFFICER</div>
+
+        <div class="modal-info-grid" style="grid-template-columns: 1fr; margin-bottom: 20px;">
+          <div class="modal-info-card">
+            <small>HOUSE / CLAN</small>
+            <strong id="modalHouse">OTF — onythefamily</strong>
+          </div>
+        </div>
+
+        <div class="modal-actions" id="modalSocialLinks">
+          <!-- Dynamically populated Facebook button -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="members-data.js"></script>
+  <script src="members.js"></script>
+  <script src="ui-effects.js"></script>
+  <script src="music-player.js"></script>
+</body>
+</html>
+
+
+

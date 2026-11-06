@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OTF — onythefamily Private Community Roster & Member Showcase">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OTF — onythefamily">
+  <meta property="og:title" content="OTF — onythefamily | Private Community">
+  <meta property="og:description" content="ครอบครัวที่ยืนหยัดด้วยความจริงใจและความภักดี LOYALTY OVER ROYALTY">
+  <title>OTF — onythefamily</title>
+  <link rel="icon" type="image/png" href="otf-logo.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="otf-logo.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+
+  <!-- Ambient Background & Weather Canvas -->
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <div class="ambient-glow-mesh" aria-hidden="true"></div>
+  <canvas id="weatherCanvas"></canvas>
+
+  <!-- Navigation Topbar -->
+  <header class="topbar shell">
+    <a class="brand" href="index.html" aria-label="OTF Home">
+      <div class="brand-box">
+        <img src="otf-logo.png" alt="OTF">
+      </div>
+      <div class="brand-text">
+        <span class="brand-word">OTF</span>
+        <span class="brand-sub">onythefamily</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Main Navigation">
+      <a class="active" href="index.html">Home</a>
+      <a href="members.html">Members</a>
+    </nav>
+  </header>
+
+  <!-- Main Hero Section -->
+  <main class="minimal-home shell">
+    <section class="minimal-home-copy">
+      <div class="minimal-kicker">PRIVATE COMMUNITY</div>
+      <h1>OTF</h1>
+      <div class="minimal-home-subtitle">onythefamily</div>
+
+      <div class="minimal-home-actions">
+        <a class="primary-button" href="members.html">
+          ดูรายชื่อสมาชิก <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Right 3D Rotating Logo Showcase (File 04) -->
+    <aside class="minimal-home-showcase" aria-label="OTF 3D Logo">
+      <div class="home-logo-rotator">
+        <img class="logo-3d-spin" src="otf-logo.png" alt="Only The Family OTF 3D Logo">
+      </div>
+    </aside>
+  </main>
+
+  <!-- Core Scripts -->
+  <script src="members-data.js"></script>
+  <script src="ui-effects.js"></script>
+  <script src="music-player.js"></script>
+</body>
+</html>
+
